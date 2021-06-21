@@ -1,0 +1,6 @@
+.terraform/*
+terraform.tfstate
+terraform.tfstate.backup
+
+# custom variables file
+terraform.tfvars.json
