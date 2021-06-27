@@ -1,3 +1,7 @@
+# 概要と利用方法を記載した記事ページ
+
+https://qiita.com/momotaro98/items/24cec11fc050c014057f
+
 # isucon-aws-terraform
 
 ISUCON環境をAWS上に構築するterraformモジュール郡
