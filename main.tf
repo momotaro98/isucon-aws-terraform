@@ -19,11 +19,13 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "./modules/vpc"
+  source       = "./modules/vpc"
+  vpc_net_mask = var.vpc_net_mask
 }
 
 module "subnet" {
   source         = "./modules/subnet"
+  vpc_net_mask   = var.vpc_net_mask
   vpc_id         = module.vpc.vpc_id
   route_table_id = module.vpc.route_table_id
 }
@@ -42,4 +44,6 @@ module "participant-ec2" {
   subnet_id            = module.subnet.subnet_id
   security_group_id    = module.sg.security_group_id
   ec2_members          = var.ec2_members
+  ec2_instance_type    = var.ec2_instance_type
+  ec2_volume_size      = var.ec2_volume_size
 }

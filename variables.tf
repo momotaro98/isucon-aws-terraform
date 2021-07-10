@@ -16,6 +16,12 @@ variable "access_cidr_blocks" {
   description = "cidr for access"
 }
 
+variable "vpc_net_mask" {
+  type        = string
+  default     = "10.1.0.0"
+  description = "VPC network subnet mask"
+}
+
 variable "ec2_members" {
   type = map
   default = { # デフォルトではベンチマーカー役も含んだ4台のEC2が同じAMIで構築される
@@ -25,4 +31,16 @@ variable "ec2_members" {
     "3" = "benchmark-instance"
   }
   description = "EC2 instances for isucon practice"
+}
+
+variable "ec2_instance_type" {
+  type        = string
+  default     = "t2.micro"
+  description = "EC2 instance type"
+}
+
+variable "ec2_volume_size" {
+  type        = number
+  default     = 100
+  description = "EC2 EBS volume size"
 }

@@ -6,7 +6,7 @@ resource "aws_key_pair" "participant-key" {
 resource "aws_instance" "participant-instance" {
   ami = data.aws_ami.standalone_ami.id
   count = length(var.ec2_members)
-  instance_type = "t2.micro"
+  instance_type = var.ec2_instance_type
   subnet_id = var.subnet_id
   associate_public_ip_address = true
   key_name = aws_key_pair.participant-key.id
@@ -14,7 +14,7 @@ resource "aws_instance" "participant-instance" {
 
   root_block_device {
     volume_type           = "standard"
-    volume_size           = 100
+    volume_size           = var.ec2_volume_size
     delete_on_termination = true
   }
 
