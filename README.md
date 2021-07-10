@@ -22,7 +22,7 @@ ssh-keygen -t rsa -b 4096 -C "isucon key" -f isucon_id_rsa
 modules/credential/isucon_id_rsa.pub
 ```
 
-terraformで構築後、以下のようにまたは`.ssh/config`を修正しアクセスする。
+terraformで構築後、以下のようにEC2へSSHできる。
 
 ```
 ssh -i path/isucon_id_rsa ubuntu@public-domain
