@@ -41,6 +41,6 @@ variable "ec2_instance_type" {
 
 variable "ec2_volume_size" {
   type        = number
-  default     = 100
+  default     = 20
   description = "EC2 EBS volume size"
 }
