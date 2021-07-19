@@ -75,6 +75,6 @@ terraform destroy
 ファイルフォーマット、バリデーション
 
 ```
-terraform fmt
+terraform fmt -recursive
 terraform validate
 ```
