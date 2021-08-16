@@ -1,14 +1,16 @@
-# 概要と利用方法を記載した記事ページ
+# isucon-aws-terraform
+
+# これはなに？
+
+ISUCON環境をAWS EC2へ構築するためのTerraformモジュール郡です。
+
+# 詳細と利用方法を記載した記事ページ
 
 https://qiita.com/momotaro98/items/24cec11fc050c014057f
 
-# isucon-aws-terraform
+# 設定する必要がある項目
 
-ISUCON環境をAWS上に構築するterraformモジュール郡
-
-## 設定する必要がある項目
-
-### EC2へのSSH用Key生成とPublic Keyの設定
+## EC2へのSSH用Key生成とPublic Keyの設定
 
 専用鍵がなければ以下のようにして鍵を生成する。
 
@@ -28,27 +30,16 @@ terraformで構築後、以下のようにEC2へSSHできる。
 ssh -i path/isucon_id_rsa ubuntu@public-domain
 ```
 
-### var file 変数
+## パラメータ設定
 
-#### ファイルの優先順位
+### ファイルの優先順位
 
-1. `terraform.tfvars.json` => .gitignoreしている。 利用者がファイルをローカル上で作成する必要がある。
-2. `variables.tf`          => デフォルト値を指定している。
+1. `terraform.tfvars.json` => .gitignoreしていますので、利用者がファイルをローカル上で作成する必要があります。
+2. `variables.tf`          => デフォルト値を指定しています。
 
-`terraform.tfvars.json` の例
+### パラメータ設定マニュアル
 
-```
-{
-  "access_cidr_blocks": "256.256.256.256/32"
-}
-```
-
-### 各変数の説明
-
-* `standalone_ami_owner`  => AMIの所有者。standalone_ami_nameと組み合わせる。
-* `standalone_ami_name`   => AMI所有者が持つAMI名。先頭文字として検索し重複するAMIがある場合は最新が利用される。 `terraform.tfvars.json` で指定しておく必要あり。
-* `access_cidr_blocks`    => EC2に指定するセキュリティグループのInboundで許可するIPアドレス。自身のインターネット環境でのグローバルIPなど指定してください。
-* `ec2_members`           => 立ち上げるEC2を指定。現状はすべてのEC2は上記の同じAMIがあてられる。
+[こちら](https://qiita.com/momotaro98/items/24cec11fc050c014057f#%E6%A7%8B%E7%AF%89%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B)を参照してください。
 
 # Run terraform
 
