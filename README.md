@@ -24,10 +24,27 @@ ssh-keygen -t rsa -b 4096 -C "isucon key" -f isucon_id_rsa
 modules/credential/isucon_id_rsa.pub
 ```
 
-terraformで構築後、以下のようにEC2へSSHできる。
+terraformで構築後、以下のような設定でEC2へSSHできる。
+
+`~/.ssh/config`
 
 ```
-ssh -i path/isucon_id_rsa ubuntu@public-domain
+Host isucon-practice-ec2
+  HostName your_EC2_public_name
+  Port 22
+  User ubuntu
+  IdentityFile ~/.ssh/isucon_id_rsa
+  IdentitiesOnly yes
+  RequestTTY yes
+  RemoteCommand sudo su - isucon
+```
+
+login
+
+```
+ssh isucon-practice-ec2
+isucon@ip-10-2-0-25:~$ ls
+bench  env.sh  go  local  webapp
 ```
 
 ## パラメータ設定
