@@ -1,6 +1,6 @@
 resource "aws_key_pair" "participant-key" {
   key_name   = "isucon_key"
-  public_key = file("./modules/credential/isucon_id_rsa.pub")
+  public_key = file("./modules/credential/isucon_id_ed25519.pub")
 }
 
 resource "aws_instance" "participant-instance" {
