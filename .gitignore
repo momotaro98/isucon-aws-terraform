@@ -1,6 +1,7 @@
 .terraform/*
 terraform.tfstate
 terraform.tfstate.backup
+.terraform.lock.hcl
 
 # custom variables file
 terraform.tfvars.json
